@@ -1,0 +1,17 @@
+#canvas{
+	display:block;
+	border:1px solid #ccc;
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin-left:-300px;
+	margin-top:-300px;
+	background:#ccc;
+ 
+	/*background-image: url(../images/bg.png);*/
+ }
+
+
+
+
+
