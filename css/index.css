@@ -10,7 +10,25 @@
  
 	/*background-image: url(../images/bg.png);*/
  }
+ .reset{
+ 	position:absolute;
+ 	left:10%;
+ 	top:30%;
+ 	background:red;
+ 	width:80px;
+ 	height:30px;
+ 	border:none;
+ }
+.regret{
+	position:absolute;
+	left:10%;
+ 	top:50%;
+	width:80px;
+ 	height:30px;
+ 	border:none;
+ 	background:red;
 
+}
 
 
 

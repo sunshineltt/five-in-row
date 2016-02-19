@@ -168,13 +168,24 @@ window.onload=function(){
  		 
  	} 
  
- 	canvas.ondblclick=function(e){
+ 	/*canvas.ondblclick=function(e){
 		e.stopPropagation();
-	}
-	document.ondblclick=function(){
+	}*/
+	var reset=document.querySelector('.reset');
+ 	reset.onclick=function(){
 		localStorage.clear();
 		location.reload();
 		//qizi={};
 	}
+	/*var regret=document.querySelector('.regret');
+	regret.onclick=function(){
+		var newqizi={};
+		for(var i in qizi){
+			if(i!=(x+'_'+y)){
+				newqizi[i]=qizi[i];
+			}
+		}
+		
+	}*/
 
 }
