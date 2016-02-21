@@ -4,6 +4,8 @@ window.onload=function(){
   	var ROW=15;//棋盘星点  位置数据	//棋牌横竖的循环绘制
 	var qizi={};//用空对象 来做字典
  	//var kaiguan=true;//标识  该 谁洛子
+ 	kaiguan = localStorage.x?false:true;
+
   	ctx.strokeStyle='#333';
   	var huaqipan=function(){
   		for(var i=0;i<15;i++){
@@ -41,13 +43,10 @@ window.onload=function(){
  color:false  代表白子
 
  */
-/* var canvas2=document.querySelector('#canvas2');
- var ctx2=canvas2.getContext('2d');*/
- 	var kaiguan=localStorage.x?false:true;
  	 var luozi=function(x,y,color){
  		var zx=40*x+20.5;
  		var zy=40*y+20.5;
-	    var black=ctx.createRadialGradient(zx-5,zy-5,1,zx,zy,18);
+	     var black=ctx.createRadialGradient(zx-5,zy-5,1,zx,zy,18);
 		black.addColorStop(0.1,'#555');
 		black.addColorStop(1,'black');
 
@@ -60,8 +59,6 @@ window.onload=function(){
 		ctx.beginPath();
 		ctx.arc(zx,zy,18,0,Math.PI*2);
 		ctx.fill();
-   
-
 	}
  
 //用图片的方法
@@ -76,7 +73,9 @@ window.onload=function(){
   		}
   	}
  */
- 	canvas.onclick=function(e){
+	
+	var kaiguan=localStorage.x?false:true;
+	canvas.onclick=function(e){
  		//console.log(e.offsetX);
 		var x=Math.round((e.offsetX-20.5)/40);
 		var y=Math.round((e.offsetY-20.5)/40);
@@ -112,6 +111,8 @@ window.onload=function(){
 				}
 			}
 		}
+
+
  		kaiguan=!kaiguan;
 		console.log(kaiguan);
   		localStorage.data=JSON.stringify(qizi);
@@ -121,24 +122,21 @@ window.onload=function(){
 			localStorage.removeItem('x');
 		}
 
-		//悔棋   回退一步
-		var regret=document.querySelector('.regret');
-		regret.onclick=function(){
-		//	alert('1')
-			var newqizi={};
-			for(var i in qizi){
-				if(i!=(x+'_'+y)){
-					newqizi[i]=qizi[i];
-				}
-			}
-			qizi = newqizi;
-	        kaiguan = !kaiguan;
-	        ctx.clearRect(x*40+3,y*40+3,35,35);
-	 	} 
-
-
 	}
-
+	//悔棋   回退一步
+	var regret=document.querySelector('.regret');
+	regret.onclick=function(){
+		alert(1)
+		var newqizi={};
+		for(var i in qizi){
+			if(i!=(x+'_'+y)){
+				newqizi[i]=qizi[i];
+			}
+		}
+		qizi = newqizi;
+        kaiguan = !kaiguan;
+        ctx.clearRect(x*40+3,y*40+3,35,35);
+	} 
 
  	var xy2id=function(x,y){return x+'_'+y;}//返回当前棋子的位置
  	
@@ -184,14 +182,17 @@ window.onload=function(){
   		}
  		 
  	} 
-  //重置    将缓存清除
-  var reset=document.querySelector('.reset');
+ 	//重置    将缓存清除
+  /*var reset=document.querySelector('.reset');
   	reset.onclick=function(){
   		alert(2)
 		localStorage.clear();
 		location.reload();
- 	}
- 
-  
+ 	}*/
+ 	document.ondblclick=function(){
+    	localStorage.clear();
+    	location.reload();
+    }
+ 	
 
 }
