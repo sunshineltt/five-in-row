@@ -7,12 +7,12 @@ window.onload=function(){
   	ctx.strokeStyle='#333';
   	var huaqipan=function(){
   		for(var i=0;i<15;i++){
- 		//所有横线
+ 			//所有横线
 			ctx.beginPath();
 			ctx.moveTo(20,i*40+20.5);
 			ctx.lineTo(580,i*40+20.5);
 			ctx.stroke();
-	 		//所有竖线
+	 		//所有竖线  
 			ctx.beginPath();
 			ctx.moveTo(i*40+20.5,20);
 			ctx.lineTo(i*40+20.5,580);
@@ -39,30 +39,29 @@ window.onload=function(){
  x,y:Number  落子的x,y坐标
  color:true   代表黑子
  color:false  代表白子
-
  */
-/* var canvas2=document.querySelector('#canvas2');
- var ctx2=canvas2.getContext('2d');*/
+
+ var canvas2=document.querySelector('#canvas2');
+ var ctx2=canvas2.getContext('2d');
  	var kaiguan=localStorage.x?false:true;
  	 var luozi=function(x,y,color){
  		var zx=40*x+20.5;
  		var zy=40*y+20.5;
-	    var black=ctx.createRadialGradient(zx-5,zy-5,1,zx,zy,18);
+ 		
+	    var black=ctx2.createRadialGradient(zx-5,zy-5,1,zx,zy,18);
 		black.addColorStop(0.1,'#555');
 		black.addColorStop(1,'black');
 
-		var white=ctx.createRadialGradient(zx-5,zy-5,1,zx,zy,18);
+		var white=ctx2.createRadialGradient(zx-5,zy-5,1,zx,zy,18);
 		white.addColorStop(0.1,'#fff');
 		white.addColorStop(1,'#eee');
 		 
-		ctx.fillStyle=color?black:white;	
+		ctx2.fillStyle=color?black:white;	
 		//kaiguan=!kaiguan;	 
-		ctx.beginPath();
-		ctx.arc(zx,zy,18,0,Math.PI*2);
-		ctx.fill();
-   
-
-	}
+		ctx2.beginPath();
+		ctx2.arc(zx,zy,18,0,Math.PI*2);
+		ctx2.fill();
+ 	}
  
 //用图片的方法
 /*	var sucai=document.querySelector('#sucai');
@@ -76,7 +75,7 @@ window.onload=function(){
   		}
   	}
  */
- 	canvas.onclick=function(e){
+ 	canvas2.onclick=function(e){
  		//console.log(e.offsetX);
 		var x=Math.round((e.offsetX-20.5)/40);
 		var y=Math.round((e.offsetY-20.5)/40);
@@ -133,7 +132,7 @@ window.onload=function(){
 			}
 			qizi = newqizi;
 	        kaiguan = !kaiguan;
-	        ctx.clearRect(x*40+3,y*40+3,35,35);
+	        ctx2.clearRect(x*40+2,y*40+2,40,40);
 	 	} 
 
 
@@ -187,10 +186,21 @@ window.onload=function(){
   //重置    将缓存清除
   var reset=document.querySelector('.reset');
   	reset.onclick=function(){
-  		alert(2)
+  		///alert(2);
 		localStorage.clear();
 		location.reload();
  	}
+
+
+
+
+
+
+
+
+
+
+ 	
  
   
 
